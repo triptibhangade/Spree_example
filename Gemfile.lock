@@ -1,3 +1,11 @@
+PATH
+  remote: ../spree_image_editor
+  specs:
+    spree_image_editor (0.0.1.alpha)
+      spree_backend (>= 3.2.0, < 5.0)
+      spree_core (>= 3.2.0, < 5.0)
+      spree_extension
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -407,6 +415,7 @@ DEPENDENCIES
   spree (~> 4.0.0.rc2)
   spree_auth_devise (~> 4.0.0.rc2)
   spree_gateway (~> 3.6)
+  spree_image_editor!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)

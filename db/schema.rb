@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_112689) do
+ActiveRecord::Schema.define(version: 2019_09_23_093123) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -130,6 +130,14 @@ ActiveRecord::Schema.define(version: 2019_09_18_112689) do
     t.index ["viewable_type", "type"], name: "index_assets_on_viewable_type_and_type"
   end
 
+  create_table "spree_backgrounds", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "spree_calculators", force: :cascade do |t|
     t.string "type"
     t.string "calculable_type"
@@ -141,6 +149,16 @@ ActiveRecord::Schema.define(version: 2019_09_18_112689) do
     t.index ["calculable_id", "calculable_type"], name: "index_spree_calculators_on_calculable_id_and_calculable_type"
     t.index ["deleted_at"], name: "index_spree_calculators_on_deleted_at"
     t.index ["id", "type"], name: "index_spree_calculators_on_id_and_type"
+  end
+
+  create_table "spree_colors", force: :cascade do |t|
+    t.string "color_code"
+    t.datetime "deleted_at"
+    t.integer "filter_id"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["filter_id"], name: "index_spree_colors_on_filter_id"
   end
 
   create_table "spree_countries", force: :cascade do |t|
@@ -186,6 +204,14 @@ ActiveRecord::Schema.define(version: 2019_09_18_112689) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["number"], name: "index_spree_customer_returns_on_number", unique: true
     t.index ["stock_location_id"], name: "index_spree_customer_returns_on_stock_location_id"
+  end
+
+  create_table "spree_filters", force: :cascade do |t|
+    t.string "name"
+    t.datetime "deleted_at"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "spree_gateways", force: :cascade do |t|
@@ -835,6 +861,14 @@ ActiveRecord::Schema.define(version: 2019_09_18_112689) do
     t.index ["country_id"], name: "index_spree_states_on_country_id"
   end
 
+  create_table "spree_stickers", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "spree_stock_items", force: :cascade do |t|
     t.integer "stock_location_id"
     t.integer "variant_id"
@@ -1025,6 +1059,25 @@ ActiveRecord::Schema.define(version: 2019_09_18_112689) do
     t.index ["position"], name: "index_spree_taxons_on_position"
     t.index ["rgt"], name: "index_spree_taxons_on_rgt"
     t.index ["taxonomy_id"], name: "index_taxons_on_taxonomy_id"
+  end
+
+  create_table "spree_template_frames", force: :cascade do |t|
+    t.integer "template_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spree_templates", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "width"
+    t.decimal "height"
+    t.decimal "scale", precision: 5, scale: 2
+    t.string "edges"
+    t.string "slug"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "spree_trackers", force: :cascade do |t|
