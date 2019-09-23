@@ -4,7 +4,7 @@ class AddSpreeBackgrounds < ActiveRecord::Migration[6.0]
     create_table :spree_backgrounds do |t|
       t.string :name
       t.string :slug
-      # t.attachment :image
+      t.attachment :image
       t.datetime :deleted_at
       
       t.timestamps
